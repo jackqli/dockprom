@@ -15,5 +15,5 @@ receivers:
     smarthost: smtp.126.com:25
     from: jacqli@126.com
     auth_username: jacqli@126.com
-    auth_password: SMVYGFWNLFNYJWBW
+    auth_password: 
     send_resolved: true
