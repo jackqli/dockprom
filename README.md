@@ -367,3 +367,14 @@ To run the grafana container as `user: 104` change your `docker-compose.yml` lik
     labels:
       org.label-schema.group: "monitoring"
 ```
+
+what have been changed in the my_default.ini?
+log  set to debug
+smtp: smtp need to contain the port, updated user/from must be the same
+unified alert enabled, legacy alert disabled
+
+stress test?
+docker pull joedval/stress
+docker run -it --rm -c 512 joedval/stress --cpu 1
+
+

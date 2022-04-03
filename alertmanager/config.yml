@@ -1,11 +1,19 @@
 route:
-    receiver: 'slack'
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 24h
+  receiver: 'email'
+
+templates:
+- '/etc/alertmanager/templates/*.tmpl'
 
 receivers:
-    - name: 'slack'
-      slack_configs:
-          - send_resolved: true
-            text: "{{ .CommonAnnotations.description }}"
-            username: 'Prometheus'
-            channel: '#<channel-name>'
-            api_url: 'https://hooks.slack.com/services/<webhook-id>'
+- name: 'email'
+  email_configs:
+  - to: 'gxlcliqi@126.com'
+    smarthost: smtp.126.com:25
+    from: jacqli@126.com
+    auth_username: jacqli@126.com
+    auth_password: SMVYGFWNLFNYJWBW
+    send_resolved: true
