@@ -377,4 +377,29 @@ stress test?
 docker pull joedval/stress
 docker run -it --rm -c 512 joedval/stress --cpu 1
 
+alertmanager api:
+https://prometheus.io/docs/alerting/latest/clients/
+https://app.swaggerhub.com/apis/megrez/alertmanager-api/0.0.1#/silence/getSilences
+https://github.com/prometheus/alertmanager/issues/2127
 
+
+get http://localhost:9093/api/v2/silences
+
+pos http://localhost:9093/api/v2/silences
+{
+      "matchers": [
+        {
+          "name": "env",
+          "value": "prod",
+          "isRegex": false
+        }
+      ],
+      "startsAt": "2022-10-25T22:12:33.533330795Z",
+      "endsAt": "2022-10-25T23:11:44.603Z",
+      "createdBy": "api",
+      "comment": "release"
+}
+
+delete http://localhost:9093/api/v2/silence/a5ac4b0c-ccb7-4f17-b647-c243c9b74503
+
+rfc3339 timestamp

@@ -30,9 +30,10 @@ services:
     container_name: alertmanager
     volumes:
       - ./alertmanager:/etc/alertmanager
+      - ./alertmanager_data:/alertmanager_data
     command:
       - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=/alertmanager'
+      - '--storage.path=/alertmanager_data'
     restart: unless-stopped
     expose:
       - 9093

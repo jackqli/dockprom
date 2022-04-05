@@ -3,7 +3,7 @@ route:
   group_wait: 10s
   group_interval: 10s
   repeat_interval: 24h
-  receiver: 'email'
+  receiver: 'webhook'
 
 templates:
 - '/etc/alertmanager/templates/*.tmpl'
@@ -17,3 +17,7 @@ receivers:
     auth_username: jacqli@126.com
     auth_password: 
     send_resolved: true
+- name: webhook
+  webhook_configs:
+  - url: 'http://host.docker.internal:7000/webhook/uat'
+    send_resolved: true   
