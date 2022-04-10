@@ -109,6 +109,35 @@ services:
     labels:
       org.label-schema.group: "monitoring"
 
+  kafka_exporter:
+    image: danielqsj/kafka-exporter
+    container_name: kafka_exporter
+    command: --kafka.server=kafka:9092
+    expose:
+      - 9308
+
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    container_name: zookeeper
+    expose:
+      - 2181
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+  kafka:
+    image: docker.io/bitnami/kafka:2.8
+    container_name: kafka
+    expose:
+      - 9092
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper    
+
   caddy:
     image: caddy:2.3.0
     container_name: caddy
@@ -117,6 +146,8 @@ services:
       - "9090:9090"
       - "9093:9093"
       - "9091:9091"
+      - "9092:9092"
+      - "9308:9308"
     volumes:
       - ./caddy:/etc/caddy
     environment:
@@ -126,27 +157,3 @@ services:
     restart: unless-stopped
     labels:
       org.label-schema.group: "monitoring"
-
-  kafka_exporter:
-    image: danielqsj/kafka-exporter
-    command: --kafka.server=kafka:9092
-
-  zookeeper:
-    image: docker.io/bitnami/zookeeper:3.8
-    ports:
-      - "2181:2181"
-    volumes:
-      - "zookeeper_data:/bitnami"
-    environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
-  kafka:
-    image: docker.io/bitnami/kafka:2.8
-    ports:
-      - "9092:9092"
-    volumes:
-      - "kafka_data:/bitnami"
-    environment:
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - ALLOW_PLAINTEXT_LISTENER=yes
-    depends_on:
-      - zookeeper    
