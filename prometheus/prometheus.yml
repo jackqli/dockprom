@@ -11,6 +11,13 @@ global:
 rule_files:
   - "alert.rules"
 
+alerting:
+  alertmanagers:
+  - scheme: http
+    static_configs:
+    - targets: 
+      - 'alertmanager:9093'
+
 # A scrape configuration containing exactly one endpoint to scrape.
 scrape_configs:
   - job_name: 'nodeexporter'
@@ -41,12 +48,11 @@ scrape_configs:
     static_configs:
       - targets: ['host.docker.internal:7070']
 
-alerting:
-  alertmanagers:
-  - scheme: http
+  - job_name: 'kafka_exporter'
+    scrape_interval: 10s
+    honor_labels: true
     static_configs:
-    - targets: 
-      - 'alertmanager:9093'
+      - targets: ['kafka_exporter:9308']
 
 #  - job_name: 'nginx'
 #    scrape_interval: 10s
@@ -57,3 +63,4 @@ alerting:
 #    scrape_interval: 10s
 #    static_configs:
 #      - targets: ['eventlog-proxy:5000', 'eventlog:5000']
+
