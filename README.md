@@ -32,5 +32,5 @@ ADMIN_USER=admin ADMIN_PASSWORD=admin ADMIN_PASSWORD_HASH=JDJhJDE0JE91S1FrN0Z0VE
 * Caddy (reverse proxy and basic auth provider for prometheus and alertmanager)
 
 
-![Host](https://raw.githubusercontent.com/jackqli/dockprom/master/screens/Grafana_Docker_Host.png)
+![Host](https://raw.githubusercontent.com/jackqli/dockprom/master/screens/Grafana_Docker_Host2.png)
 
