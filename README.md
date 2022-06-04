@@ -30,3 +30,7 @@ ADMIN_USER=admin ADMIN_PASSWORD=admin ADMIN_PASSWORD_HASH=JDJhJDE0JE91S1FrN0Z0VE
 * Grafana (visualize metrics) `http://<host-ip>:3000`
 * NodeExporter (host metrics collector)
 * Caddy (reverse proxy and basic auth provider for prometheus and alertmanager)
+
+
+![Host](https://raw.githubusercontent.com/jackqli/dockprom/master/screens/Grafana_Docker_Host.png)
+
