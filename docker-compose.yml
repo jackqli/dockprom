@@ -38,6 +38,7 @@ services:
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager_data'
+      - '--log.level=debug'
     restart: unless-stopped
     expose:
       - 9093
@@ -59,24 +60,6 @@ services:
     restart: unless-stopped
     expose:
       - 9100
-    labels:
-      org.label-schema.group: "monitoring"
-
-  cadvisor:
-    image: google/cadvisor:v0.33.0
-    container_name: cadvisor
-    privileged: true
-    devices:
-      - /dev/kmsg:/dev/kmsg
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker:/var/lib/docker:ro
-      #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
-    restart: unless-stopped
-    expose:
-      - 8080
     labels:
       org.label-schema.group: "monitoring"
 
@@ -108,35 +91,6 @@ services:
       - 9091
     labels:
       org.label-schema.group: "monitoring"
-
-  kafka_exporter:
-    image: danielqsj/kafka-exporter
-    container_name: kafka_exporter
-    command: --kafka.server=kafka:9092
-    expose:
-      - 9308
-
-  zookeeper:
-    image: docker.io/bitnami/zookeeper:3.8
-    container_name: zookeeper
-    expose:
-      - 2181
-    volumes:
-      - "zookeeper_data:/bitnami"
-    environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
-  kafka:
-    image: docker.io/bitnami/kafka:2.8
-    container_name: kafka
-    expose:
-      - 9092
-    volumes:
-      - "kafka_data:/bitnami"
-    environment:
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - ALLOW_PLAINTEXT_LISTENER=yes
-    depends_on:
-      - zookeeper    
 
   caddy:
     image: caddy:2.3.0
