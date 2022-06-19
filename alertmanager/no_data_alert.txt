@@ -1,0 +1,138 @@
+no data的告警时间是condition里面的时间5m而不是evaluate上面的1m
+要重新组合告警的消息，normal的内容应该是:
+commonLabels里面的alertname + commonAnnotations里面的summary + alert数组的每一个alert的annotations里面的description;
+DatasourceNoData的内容应该是：
+先判断alertname是DatasourceNoData的话，就commonLabels里面的alertname +  alert数组的每一个alert的labels里面的rulename
+
+{
+  'receiver': 'webhook2',
+  'status': 'firing',
+  'alerts': [
+    {
+      'status': 'firing',
+      'labels': {
+        '__alert_rule_uid__': 'wGO4YR37z',
+        'alertname': 'DatasourceNoData',
+        'datasource_uid': 'PBFA97CFB590B2093',
+        'env': 'dev',
+        'ref_id': 'A',
+        'rulename': 'error_message',
+        'severity': 'critical'
+      },
+      'annotations': {
+        '__dashboardUid__': 'anhWYgqnk',
+        '__panelId__': '2',
+        'summary': 'error message count is greater than 0'
+      },
+      'startsAt': '2022-06-19T12:40:07.4490427Z',
+      'endsAt': '0001-01-01T00:00:00Z',
+      'generatorURL': 'http://localhost:3000/alerting/wGO4YR37z/edit',
+      'fingerprint': 'a266ad6555c3bd63'
+    },
+    {
+      'status': 'firing',
+      'labels': {
+        '__alert_rule_uid__': 'z96aipwnk',
+        'alertname': 'DatasourceNoData',
+        'datasource_uid': 'PBFA97CFB590B2093',
+        'env': 'dev',
+        'ref_id': 'A',
+        'rulename': 'fx_batch_scenario_failure',
+        'severity': 'critical'
+      },
+      'annotations': {
+        '__dashboardUid__': 'Vc1eUsy7k',
+        '__panelId__': '4',
+        'summary': 'FX Batch Scenarios failure rate exceed 5%'
+      },
+      'startsAt': '2022-05-07T08:51:07Z',
+      'endsAt': '0001-01-01T00:00:00Z',
+      'generatorURL': 'http://localhost:3000/alerting/z96aipwnk/edit',
+      'fingerprint': '714c78b4485e7887'
+    }
+  ],
+  'groupLabels': {
+    'alertname': 'DatasourceNoData'
+  },
+  'commonLabels': {
+    'alertname': 'DatasourceNoData',
+    'datasource_uid': 'PBFA97CFB590B2093',
+    'env': 'dev',
+    'ref_id': 'A',
+    'severity': 'critical'
+  },
+  'commonAnnotations': {
+    
+  },
+  'externalURL': 'http://5e0cac2e1a05:9093',
+  'version': '4',
+  'groupKey': '{}/{}:{alertname="DatasourceNoData"}',
+  'truncatedAlerts': 0
+}
+
+
+{
+  'receiver': 'webhook2',
+  'status': 'firing',
+  'alerts': [
+    {
+      'status': 'firing',
+      'labels': {
+        '__alert_rule_uid__': 'wGO4YR37z',
+        'alertname': 'DatasourceNoData',
+        'datasource_uid': 'PBFA97CFB590B2093',
+        'env': 'dev',
+        'ref_id': 'A',
+        'rulename': 'error_message',
+        'severity': 'critical'
+      },
+      'annotations': {
+        '__dashboardUid__': 'anhWYgqnk',
+        '__panelId__': '2',
+        'summary': 'error message count is greater than 0'
+      },
+      'startsAt': '2022-06-19T11:59:07.4490427Z',
+      'endsAt': '0001-01-01T00:00:00Z',
+      'generatorURL': 'http://localhost:3000/alerting/wGO4YR37z/edit',
+      'fingerprint': 'a266ad6555c3bd63'
+    },
+    {
+      'status': 'firing',
+      'labels': {
+        '__alert_rule_uid__': 'z96aipwnk',
+        'alertname': 'DatasourceNoData',
+        'datasource_uid': 'PBFA97CFB590B2093',
+        'env': 'dev',
+        'ref_id': 'A',
+        'rulename': 'fx_batch_scenario_failure',
+        'severity': 'critical'
+      },
+      'annotations': {
+        '__dashboardUid__': 'Vc1eUsy7k',
+        '__panelId__': '4',
+        'summary': 'FX Batch Scenarios failure rate exceed 5%'
+      },
+      'startsAt': '2022-05-07T08:51:07Z',
+      'endsAt': '0001-01-01T00:00:00Z',
+      'generatorURL': 'http://localhost:3000/alerting/z96aipwnk/edit',
+      'fingerprint': '714c78b4485e7887'
+    }
+  ],
+  'groupLabels': {
+    'alertname': 'DatasourceNoData'
+  },
+  'commonLabels': {
+    'alertname': 'DatasourceNoData',
+    'datasource_uid': 'PBFA97CFB590B2093',
+    'env': 'dev',
+    'ref_id': 'A',
+    'severity': 'critical'
+  },
+  'commonAnnotations': {
+    
+  },
+  'externalURL': 'http://5e0cac2e1a05:9093',
+  'version': '4',
+  'groupKey': '{}/{}:{alertname="DatasourceNoData"}',
+  'truncatedAlerts': 0
+}

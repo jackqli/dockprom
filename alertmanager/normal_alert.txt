@@ -1,0 +1,46 @@
+{
+  'receiver': 'webhook2',
+  'status': 'firing',
+  'alerts': [
+    {
+      'status': 'firing',
+      'labels': {
+        '__alert_rule_uid__': 'wGO4YR37z',
+        'alertname': 'error_message',
+        'env': 'dev',
+        'severity': 'critical'
+      },
+      'annotations': {
+        '__dashboardUid__': 'anhWYgqnk',
+        '__panelId__': '2',
+        '__value_string__': '[ metric=\'error_send_message_total{env="dev", instance="host.docker.internal:7070", job="springboot"}\' labels={__name__=error_send_message_total, env=dev, instance=host.docker.internal:7070, job=springboot} value=0 ]',
+        'description': '[ metric=\'error_send_message_total{env="dev", instance="host.docker.internal:7070", job="springboot"}\' labels={__name__=error_send_message_total, env=dev, instance=host.docker.internal:7070, job=springboot} value=0 ]',
+        'summary': 'error message count is greater than 0'
+      },
+      'startsAt': '2022-06-19T12:19:07.4490427Z',
+      'endsAt': '0001-01-01T00:00:00Z',
+      'generatorURL': 'http://localhost:3000/alerting/wGO4YR37z/edit',
+      'fingerprint': '4e1b865041b68232'
+    }
+  ],
+  'groupLabels': {
+    'alertname': 'error_message'
+  },
+  'commonLabels': {
+    '__alert_rule_uid__': 'wGO4YR37z',
+    'alertname': 'error_message',
+    'env': 'dev',
+    'severity': 'critical'
+  },
+  'commonAnnotations': {
+    '__dashboardUid__': 'anhWYgqnk',
+    '__panelId__': '2',
+    '__value_string__': '[ metric=\'error_send_message_total{env="dev", instance="host.docker.internal:7070", job="springboot"}\' labels={__name__=error_send_message_total, env=dev, instance=host.docker.internal:7070, job=springboot} value=0 ]',
+    'description': '[ metric=\'error_send_message_total{env="dev", instance="host.docker.internal:7070", job="springboot"}\' labels={__name__=error_send_message_total, env=dev, instance=host.docker.internal:7070, job=springboot} value=0 ]',
+    'summary': 'error message count is greater than 0'
+  },
+  'externalURL': 'http://5e0cac2e1a05:9093',
+  'version': '4',
+  'groupKey': '{}/{}:{alertname="error_message"}',
+  'truncatedAlerts': 0
+}
